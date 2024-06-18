@@ -7,7 +7,7 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "test": "mocha",
+    "test": "mocha 'test/**/*.js' --recursive --reporter mocha-junit-reporter --timeout 60000 --exit",
     "strapi": "strapi",
     "deploy": "strapi deploy"
   },
