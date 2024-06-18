@@ -33,11 +33,11 @@
     "npm": ">=6.0.0"
   },
 "scripts": {
-    "start": "vite",
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
-  },
-  
+        "start": "vite",
+        "dev": "vite",
+        "build": "vite build",
+        "serve": "vite preview",
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
   "license": "MIT"
 }
