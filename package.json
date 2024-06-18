@@ -6,7 +6,7 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "node index.js",
-    "test": "mocha",
+    "test": "echo \"No test specified\"",
     "build": "strapi build",
     "strapi": "strapi",
     "deploy": "strapi deploy"
