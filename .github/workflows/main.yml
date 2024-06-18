@@ -29,9 +29,6 @@ jobs:
       - name: Build the Strapi app
         run: npm run build
         
-      - name: install mocha
-        run: npm install --global mocha
-        
       - name: Run tests
         run: npm test
 
