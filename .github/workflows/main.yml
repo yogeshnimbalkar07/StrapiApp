@@ -52,3 +52,29 @@ jobs:
 
       - name: Build the Strapi app
         run: npm run build
+
+      - name: Deploy to Server via SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SERVER: ${{ secrets.SERVER }}
+          USER: ${{ secrets.USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          # Setup SSH
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+          ssh-keyscan $SERVER >> ~/.ssh/known_hosts
+
+          # Sync project files to the server
+          rsync -avz --delete-after \
+            --exclude=node_modules \
+            --exclude=.git \
+            . $USER@$SERVER:$DEPLOY_PATH
+
+          # Install dependencies and restart server
+          ssh $USER@$SERVER << 'EOF'
+            cd $DEPLOY_PATH
+            npm install --production
+            npm run build
+            pm2 reload ecosystem.config.js --env production
+          EOF
