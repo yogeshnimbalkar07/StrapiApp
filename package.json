@@ -5,7 +5,8 @@
   "description": "A Strapi application",
   "scripts": {
     "develop": "strapi develop",
-    "start": "strapi start",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "strapi build",
     "strapi": "strapi",
     "deploy": "strapi deploy"
