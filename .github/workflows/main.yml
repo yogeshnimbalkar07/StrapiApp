@@ -29,6 +29,9 @@ jobs:
       - name: Build the Strapi app
         run: npm run build
 
+      - name: Run Starr
+        run: npm run start
+        
       - name: Run tests
         run: npm test
 
